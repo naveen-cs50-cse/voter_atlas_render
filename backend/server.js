@@ -36,7 +36,7 @@ app.get("/api/voters/house/:hno", async (req, res) => {
 
     const voters = await collection.find({
       hno_filtered: { $regex: `^${raw}`, $options: "i" }
-    }).lean();
+    }).toArray();
 
     res.json({
       house: raw,
@@ -58,7 +58,7 @@ app.get("/api/voters/epic/:epic", async (req, res) => {
     const epic = req.params.epic.trim().toUpperCase();
     const collection = getVoterCollection();
 
-    const voter = await collection.findOne({ epic_clean: epic }).lean();
+    const voter = await collection.findOne({ epic_clean: epic }).toArray();
 
     if (!voter) {
       return res.status(404).json({ message: "No voter found" });
@@ -88,4 +88,5 @@ app.get("/", (req, res) => {
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on ${PORT}`);
 });
+
 
