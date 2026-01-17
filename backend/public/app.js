@@ -83,7 +83,7 @@ function renderAll(voters) {
         <div class="rel-en">${v.relation_en}</div>
         <div class="rel-te">${v.relation_te}</div>
       </td>
-      <td>${v.epi}</td>
+      <td>${v.epic}</td>
       <td>${v.age}</td>
       <td>${v.sex}</td>
       <td>${v.house}</td>
@@ -132,5 +132,6 @@ function normalizeVoter(v) {
 input.addEventListener("keydown", (e) => {
   if (e.key === "Enter") searchVoter();
 });
+
 
 
