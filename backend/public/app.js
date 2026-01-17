@@ -83,10 +83,10 @@ function renderAll(voters) {
         <div class="rel-en">${v.relation_en}</div>
         <div class="rel-te">${v.relation_te}</div>
       </td>
-      <td>${v.epic_clean}</td>
+      <td>${v.epi}</td>
       <td>${v.age}</td>
       <td>${v.sex}</td>
-      <td>${v.hno_filtered}</td>
+      <td>${v.house}</td>
       <td class="addr">${v.address}</td>
     `;
     desktopTbody.appendChild(tr);
@@ -101,9 +101,9 @@ function renderAll(voters) {
       </div>
 
       <div class="card-row"><b>Relation:</b> ${v.relation_te} (${v.relation_en})</div>
-      <div class="card-row"><b>EPIC:</b> ${v.epic_clean}</div>
+      <div class="card-row"><b>EPIC:</b> ${v.epic}</div>
       <div class="card-row"><b>Age / Sex:</b> ${v.age} / ${v.sex}</div>
-      <div class="card-row"><b>House:</b> ${v.hno_filtered}</div>
+      <div class="card-row"><b>House:</b> ${v.house}</div>
       <div class="card-row"><b>Address:</b> ${v.address}</div>
     `;
     mobileContainer.appendChild(card);
@@ -119,7 +119,7 @@ function normalizeVoter(v) {
     relation_en: v["Relation Name"] || "",
     relation_te: v.relation_te || "",
 
-    epic: v["EPIC No"]?.[""] || "",
+    epic: v.epic_clean || "",
     age: v.Age || "",
     sex: v.Sex || "",
 
@@ -132,4 +132,5 @@ function normalizeVoter(v) {
 input.addEventListener("keydown", (e) => {
   if (e.key === "Enter") searchVoter();
 });
+
 
